@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ninefold Softworks — Websites &amp; Software, Built Properly</title>
+<meta name="description" content="Ninefold Softworks — web and software development studio run by Dipak, Kolkata. Business websites, web apps, custom software and maintenance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14171C; --bg-raised:#1B1F26; --bg-card:#1E232B;
+    --text:#E8E6E1; --text-dim:#8B93A1; --text-faint:#5C6472;
+    --amber:#E8A33D; --teal:#4FA6A6; --rust:#C1502E; --border:#2A2E35;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --sans:'IBM Plex Sans', -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  a{color:var(--teal); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 24px;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(20,23,28,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--border);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 24px;}
+  .brand{font-family:var(--mono); font-weight:700; font-size:16px; color:var(--text);}
+  .brand .amber{color:var(--amber);}
+  .brand .teal{color:var(--teal);}
+  .nav-links{display:flex; gap:22px; list-style:none; font-family:var(--mono); font-size:13px;}
+  .nav-links a{color:var(--text-dim);}
+  .nav-links a:hover{color:var(--amber); text-decoration:none;}
+
+  header.hero{padding:80px 0 60px; text-align:center;}
+  .wordmark{font-family:var(--mono); font-weight:700; font-size:clamp(32px,6vw,56px); margin-bottom:8px;}
+  .wordmark .amber{color:var(--amber);}
+  .wordmark .teal{color:var(--teal);}
+  .sublabel{font-family:var(--mono); font-size:12px; letter-spacing:0.15em; color:var(--text-faint); margin-bottom:22px;}
+  .tagline{font-size:18px; color:var(--text-dim); max-width:46ch; margin:0 auto 30px;}
+  .hero-cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn{font-family:var(--mono); font-size:13px; font-weight:600; padding:12px 22px; border-radius:6px; border:1px solid transparent; cursor:pointer; display:inline-block;}
+  .btn-primary{background:var(--amber); color:#1A1300;}
+  .btn-primary:hover{background:#f0b357; text-decoration:none;}
+  .btn-ghost{border-color:var(--border); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--teal); color:var(--teal); text-decoration:none;}
+
+  section{padding:56px 0; border-top:1px solid var(--border);}
+  .section-head{margin-bottom:32px;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.1em; color:var(--amber); text-transform:uppercase; margin-bottom:8px;}
+  .section-head h2{font-size:26px;}
+  .section-desc{color:var(--text-dim); font-size:15px; max-width:60ch; margin-top:10px;}
+
+  .about-text p{color:var(--text-dim); font-size:15px; margin-bottom:14px; max-width:65ch;}
+  .about-text strong{color:var(--text);}
+
+  .services{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .service-card{background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:20px;}
+  .service-card h3{font-size:16px; margin-bottom:8px; color:var(--text);}
+  .service-card p{font-size:13.5px; color:var(--text-dim);}
+
+  .work-list{display:flex; flex-direction:column; gap:12px;}
+  .work-item{background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; transition:border-color 0.15s ease;}
+  .work-item:hover{border-color:var(--teal);}
+  .work-name{font-family:var(--mono); font-weight:600; font-size:14.5px; color:var(--text);}
+  .work-desc{font-size:13.5px; color:var(--text-dim); margin-top:4px;}
+  .tag{font-family:var(--mono); font-size:10.5px; padding:3px 8px; border-radius:20px; border:1px solid var(--border); color:var(--text-dim); white-space:nowrap;}
+
+  .pricing-strip{background:var(--bg-raised); border:1px solid var(--border); border-radius:8px; padding:22px 26px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;}
+  .pricing-strip p{color:var(--text-dim); font-size:14px;}
+  .pricing-strip .from{font-family:var(--mono); color:var(--amber); font-weight:700; font-size:15px;}
+
+  .contact-box{background:var(--bg-raised); border:1px solid var(--border); border-radius:8px; padding:28px 26px; text-align:center;}
+  .contact-box p{color:var(--text-dim); font-size:15px; max-width:44ch; margin:0 auto 20px;}
+  .contact-links{display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+
+  footer{padding:28px 0 40px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .services{grid-template-columns:1fr;}
+    .pricing-strip{flex-direction:column; align-items:flex-start; text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="amber">&gt;</span>ninefold<span class="teal">_</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#services">services</a></li>
+      <li><a href="#work">work</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="wordmark"><span class="amber">&gt;</span>ninefold<span class="teal">_</span></div>
+    <div class="sublabel">SOFTWORKS</div>
+    <p class="tagline">Websites and software, built properly — by someone who spent 9 years teaching code before building it full-time.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">Get a free quote</a>
+      <a class="btn btn-ghost" href="#work">See the work</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">About</div>
+      <h2>Nine years teaching. Now building.</h2>
+    </div>
+    <div class="about-text">
+      <p>Ninefold Softworks is run by <strong>Dipak</strong>, a Kolkata-based developer who spent nine years teaching programming before moving into full-time software development.</p>
+      <p>That background shows up in how projects get delivered — every quote comes with a plain explanation of what you're paying for, not just a bill. No jargon, no overpromising on timelines to win the job.</p>
+      <p>Based in Kolkata, working with clients anywhere.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Services</div>
+      <h2>What I build</h2>
+    </div>
+    <div class="services">
+      <div class="service-card">
+        <h3>Business Websites</h3>
+        <p>Clean, fast sites for local businesses — built to load quickly and actually convert visitors into inquiries.</p>
+      </div>
+      <div class="service-card">
+        <h3>Web Apps &amp; Custom Software</h3>
+        <p>Booking systems, dashboards, internal tools — anything a spreadsheet or a phone call currently handles badly.</p>
+      </div>
+      <div class="service-card">
+        <h3>Maintenance &amp; Support</h3>
+        <p>Ongoing hosting management, updates, and small fixes so the site keeps working after launch, not just on day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Work</div>
+      <h2>Recent projects</h2>
+      <p class="section-desc">A mix of client-style demos and self-directed tools — proof of how things actually get built, not just described.</p>
+    </div>
+    <div class="work-list">
+      <div class="work-item">
+        <div>
+          <div class="work-name">BookDesk — Booking &amp; Inquiry Manager</div>
+          <div class="work-desc">Full-stack Django app: public booking form + admin dashboard for local businesses.</div>
+        </div>
+        <span class="tag">Django</span>
+      </div>
+      <div class="work-item">
+        <div>
+          <div class="work-name">Student Performance Tracker</div>
+          <div class="work-desc">Adaptive practice recommender that tracks topic-level performance.</div>
+        </div>
+        <span class="tag">Django · PostgreSQL</span>
+      </div>
+      <div class="work-item">
+        <div>
+          <div class="work-name">SquishIt</div>
+          <div class="work-desc">In-browser image compressor — no upload, no server round-trip.</div>
+        </div>
+        <span class="tag">JavaScript</span>
+      </div>
+      <div class="work-item">
+        <div>
+          <div class="work-name">RingForge</div>
+          <div class="work-desc">Browser-based ringtone maker — trim, fade, export, entirely client-side.</div>
+        </div>
+        <span class="tag">JavaScript</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="pricing-strip">
+      <p>Business websites start from <span class="from">₹10,000</span>. Custom web apps scoped individually.</p>
+      <a class="btn btn-ghost" href="#contact">Ask for a quote</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="eyebrow" style="text-align:center;">Contact</div>
+      <p>Have a project in mind? Send a message on WhatsApp or email — I usually reply the same day.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="https://wa.me/8420361178">WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:dipakchakraborty87@gmail.com?subject=Need Website quote">Email</a>
+        <a class="btn btn-ghost" href="#">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &gt;ninefold_ — websites and software, built properly.
+</footer>
+
+</body>
+</html>
